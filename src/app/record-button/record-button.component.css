@@ -1,3 +1,4 @@
+/*
 button {
   background-color: red;
   border-style: none;
@@ -9,7 +10,6 @@ button {
   font-size: 4rem;
   box-shadow: 0 .7rem 1rem rgba(0, 0, 0, 0.7);
   cursor: pointer;
-  /* TODO: http://tobiasahlin.com/blog/how-to-animate-box-shadow/ */
   transition: box-shadow 0.1s ease-in-out;
 }
 button:focus {
@@ -18,3 +18,5 @@ button:focus {
 button.mousedown {
   box-shadow: 0 .2rem .2rem rgba(0, 0, 0, 0.7);
 }
+*/
+/* TODO: http://tobiasahlin.com/blog/how-to-animate-box-shadow/ */

@@ -6,6 +6,7 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { RecordButtonComponent } from './record-button/record-button.component';
 import { DownloadLinkComponent } from './download-link/download-link.component';
+import { RecorderService } from './recorder.service';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { DownloadLinkComponent } from './download-link/download-link.component';
     MatButtonModule,
     MatIconModule
   ],
-  providers: [],
+  providers: [RecorderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

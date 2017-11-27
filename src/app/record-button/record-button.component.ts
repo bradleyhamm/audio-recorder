@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RecorderService } from '../recorder.service';
 
 @Component({
   selector: 'app-record-button',
@@ -7,17 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecordButtonComponent implements OnInit {
 
-  constructor() { }
+  recording: Boolean = false;
+
+  constructor(private recorderService: RecorderService) { }
 
   ngOnInit() {
   }
 
-  onMousedown(e) {
-    e.target.classList.add('mousedown');
+  start(): void {
+    this.recording = true;
+    this.recorderService.start();
   }
 
-  onMouseup(e) {
-    e.target.classList.remove('mousedown');
+  stop(): void {
+    this.recording = false;
+    this.recorderService.stop();
   }
 
 }
