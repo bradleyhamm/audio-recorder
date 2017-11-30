@@ -1,2 +1,14 @@
-<app-record-button></app-record-button>
-<app-download-link></app-download-link>
+<mat-list>
+  <mat-list-item *ngFor="let recording of recordings">
+    <a href="{{ recording.url }}">{{ recording.title }}</a>
+  </mat-list-item>
+</mat-list>
+
+<button mat-fab class="record start" color="primary" aria-label="record"
+  *ngIf="!recording" (click)="start()">
+  <mat-icon>mic</mat-icon>
+</button>
+<button mat-fab class="record stop" color="primary" aria-label="stop"
+  *ngIf="recording" (click)="stop()">
+  <mat-icon>stop</mat-icon>
+</button>

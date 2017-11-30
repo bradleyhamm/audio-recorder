@@ -1,8 +1,5 @@
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 
 body {
-  font-family: "Arial", sans-serif;
-  margin: 20vh auto;
-  text-align: center;
-  background-color: #ccc;
+  font-family: Roboto, Arial, sans-serif;
 }
