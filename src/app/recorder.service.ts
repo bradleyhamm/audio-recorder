@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import 'webrtc';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 declare var MediaRecorder: any;
 
 @Injectable()
 export class RecorderService {
 
-  private stream: MediaStream;
+  private audioTrack: MediaStreamTrack;
   private blob: Blob;
   private recorder: any;
 
@@ -17,25 +18,31 @@ export class RecorderService {
   }
 
   public start() {
-    navigator.mediaDevices.getUserMedia({audio: true}).then((stream: MediaStream) => {
-      let chunks = [];
-      this.recorder = new MediaRecorder(stream, {});
-      this.recorder.ondataavailable = (e: any) => {
-        chunks.push(e.data);
-        if (this.recorder.state === 'inactive') {
-          this.blob = new Blob(chunks, {type: 'audio/webm'});
+    let chunks = [];
+    if (this.audioTrack === undefined) {
+      navigator.mediaDevices.getUserMedia({audio: true}).then((stream: MediaStream) => {
+        this.audioTrack = stream.getAudioTracks()[0];
+        this.recorder = new MediaRecorder(stream, {});
+        this.recorder.ondataavailable = (e: any) => {
+          chunks.push(e.data);
+          if (this.recorder.state === 'inactive') {
+            this.blob = new Blob(chunks, {type: 'audio/webm'});
+          }
         }
-      }
+        this.recorder.start(1000);
+      });
+    } else {
+      this.audioTrack.start();
       this.recorder.start(1000);
-    });
+    }
   }
 
   public stop() {
     this.recorder.stop();
-    console.log(this.blob);
+    this.audioTrack.stop();
     setTimeout(() => {
       console.log(this.blob);
-    }, 1500);
+    }, 1100);
   }
 
   public getBlob(): Blob  {
@@ -44,6 +51,10 @@ export class RecorderService {
 
   public isSupported(): Boolean {
     return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+  }
+
+  public getRecordings(): Object[] {
+    return of([{title: 'test', url: 'asdf'}]);
   }
 
 }
