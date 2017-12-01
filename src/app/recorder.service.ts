@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { of } from 'rxjs/observable/of';
 import { DomSanitizer } from '@angular/platform-browser';
 
 declare var MediaRecorder: any;
@@ -10,7 +8,7 @@ declare var MediaRecorder: any;
 export class RecorderService {
 
   private audioTrack: MediaStreamTrack;
-  private observable: Observable;
+  private subject: Subject<Object>;
   private blob: Blob;
   private recorder: any;
 
@@ -49,14 +47,14 @@ export class RecorderService {
   }
 
   public getRecordings() {
-    this.observable = new Subject();
-    return this.observable;
+    this.subject = new Subject();
+    return this.subject;
   }
 
   private addRecording(blob: Blob) {
     var title = 'audio-' + new Date().toJSON() + '.webm';
     var url = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(blob));
-    this.observable.next({title: title, url: url});
+    this.subject.next({title: title, url: url});
   }
 
 }
