@@ -52,9 +52,8 @@ export class RecorderService {
   }
 
   private addRecording(blob: Blob) {
-    var title = 'audio-' + new Date().toJSON() + '.webm';
-    var url = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(blob));
-    this.subject.next({title: title, url: url});
+    let url = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(blob));
+    this.subject.next({url: url});
   }
 
 }
