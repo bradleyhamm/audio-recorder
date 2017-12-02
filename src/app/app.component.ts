@@ -32,9 +32,13 @@ export class AppComponent {
   }
 
   public getRecordings() {
-    this.recorderService.getRecordings().subscribe(recordings => {
+    let count = 1;
+    this.recorderService.getRecordings().subscribe((recording: any) => {
       this._ngZone.run(() => {
-        this.recordings.push(recordings);
+        recording.title = 'Audio #' + count;
+        recording.filename = 'audio-' + count + '-' + new Date().toJSON().replace(/\..+$/, '');
+        this.recordings.push(recording);
+        count++;
       });
     });
   }

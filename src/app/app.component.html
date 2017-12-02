@@ -1,16 +1,25 @@
-<mat-list>
-  <mat-list-item *ngFor="let recording of recordings">
-    <a [href]="recording.url" target="_blank" [download]="recording.title">
-      {{ recording.title }}
-    </a>
-  </mat-list-item>
-</mat-list>
+<mat-card>
+  <mat-card-content>
+    <mat-card-title>Recordings</mat-card-title>
+    <mat-list *ngIf="recordings.length">
+      <mat-list-item *ngFor="let recording of recordings">
+        {{ recording.title }}
+        <a [href]="recording.url" target="_blank" [download]="recording.filename" mat-icon-button>
+          <mat-icon matListIcon>file_download</mat-icon>
+        </a>
+      </mat-list-item>
+    </mat-list>
+    <p *ngIf="!recordings.length" class="no-recordings-message">
+      No recordings
+    </p>
+  </mat-card-content>
+</mat-card>
 
-<button mat-fab class="record start" color="primary" aria-label="record"
+<button mat-fab class="record start" aria-label="record"
   *ngIf="!isRecording" (click)="start()">
   <mat-icon>mic</mat-icon>
 </button>
-<button mat-fab class="record stop" color="primary" aria-label="stop"
+<button mat-fab class="record stop" aria-label="stop"
   *ngIf="isRecording" (click)="stop()">
   <mat-icon>stop</mat-icon>
 </button>
