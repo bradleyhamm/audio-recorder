@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { DomSanitizer } from '@angular/platform-browser';
 
 declare var MediaRecorder: any;
 
@@ -12,9 +11,7 @@ export class RecorderService {
   private blob: Blob;
   private recorder: any;
 
-  constructor(private sanitizer: DomSanitizer) {
-
-  }
+  constructor() {}
 
   ngOnInit() {
     if (!this.isSupported()) {
@@ -52,8 +49,8 @@ export class RecorderService {
   }
 
   private addRecording(blob: Blob) {
-    let url = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(blob));
-    this.subject.next({url: url});
+    let url = URL.createObjectURL(blob);
+    this.subject.next(url);
   }
 
 }
