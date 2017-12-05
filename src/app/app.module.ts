@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 
 import { AppComponent } from './app.component';
 import { RecorderService } from './recorder.service';
-
+import { PreviewService } from './preview.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { RecorderService } from './recorder.service';
     MatListModule,
     MatCardModule
   ],
-  providers: [RecorderService],
+  providers: [RecorderService, PreviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,22 +4,29 @@
     <mat-list *ngIf="recordings.length">
       <mat-list-item *ngFor="let recording of recordings">
         {{ recording.title }}
-        <a [href]="recording.url" target="_blank" [download]="recording.filename" mat-icon-button>
+        <a [href]="recording.downloadURL" target="_blank" mat-icon-button
+          [download]="recording.filename">
           <mat-icon matListIcon>file_download</mat-icon>
         </a>
+        <button (click)="previewStart(recording)" mat-icon-button
+          *ngIf="!recording.isPlaying">
+          <mat-icon matListIcon>play_arrow</mat-icon>
+        </button>
+        <button (click)="previewStop()" mat-icon-button
+          *ngIf="recording.isPlaying">
+          <mat-icon matListIcon>stop</mat-icon>
+        </button>
       </mat-list-item>
     </mat-list>
-    <p *ngIf="!recordings.length" class="no-recordings-message">
-      No recordings
-    </p>
+    <p *ngIf="!recordings.length" class="no-recordings-message">No recordings</p>
   </mat-card-content>
 </mat-card>
 
-<button mat-fab class="record start" aria-label="record"
-  *ngIf="!isRecording" (click)="start()">
+<button mat-fab class="record" *ngIf="!isRecording" (click)="startRecording()">
   <mat-icon>mic</mat-icon>
 </button>
-<button mat-fab class="record stop" aria-label="stop"
-  *ngIf="isRecording" (click)="stop()">
+<button mat-fab class="record" *ngIf="isRecording" (click)="stopRecording()">
   <mat-icon>stop</mat-icon>
 </button>
+
+<audio></audio>
