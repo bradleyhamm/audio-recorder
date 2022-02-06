@@ -1,9 +1,0 @@
-button.record {
-  position: fixed;
-  right: 35px;
-  bottom: 35px;
-}
-.no-recordings-message {
-  font-style: italic;
-  color: #777;
-}
