@@ -1,0 +1,37 @@
+<mat-toolbar>
+  <span>Recordings</span>
+</mat-toolbar>
+
+<div *ngIf="recordings.length" class="recordings">
+  <mat-card *ngFor="let recording of recordings; let isLast = last;" class="recording">
+    <mat-card-subtitle>
+      {{ recording.title }}
+    </mat-card-subtitle>
+
+    <mat-card-content>
+      <button (click)="previewStart(recording)" mat-raised-button color="primary"
+              *ngIf="!recording.isPlaying">
+        Play
+      </button>
+      <button (click)="previewStop()" mat-raised-button color="primary"
+              *ngIf="recording.isPlaying">
+        Stop
+      </button>
+
+      <a [href]="recording.downloadURL" target="_blank" mat-raised-button color="accent"
+         style="margin-left: 20px"
+         [download]="recording.filename">
+        Download
+      </a>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<button mat-fab class="md-fab record" *ngIf="!isRecording" (click)="startRecording()">
+  <mat-icon>mic</mat-icon>
+</button>
+<button mat-fab class="record" *ngIf="isRecording" (click)="stopRecording()">
+  <mat-icon>stop</mat-icon>
+</button>
+
+<audio></audio>

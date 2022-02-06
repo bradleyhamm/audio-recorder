@@ -1,0 +1,13 @@
+.recordings {
+  margin: 20px;
+}
+
+.recording {
+  margin-top: 20px;
+}
+
+button.record {
+  position: fixed;
+  right: 35px;
+  bottom: 35px;
+}
