@@ -44,7 +44,6 @@ export class AppComponent {
       this._ngZone.run(() => {
         let recording = {
           url: url,
-          title: 'Audio #' + count,
           filename: 'audio-' + count + '-' + new Date().toJSON().replace(/\..+$/, ''),
           downloadURL: this.sanitizer.bypassSecurityTrustResourceUrl(url.toString()),
           isPlaying: false
