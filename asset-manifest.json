@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.e102d906.css",
-    "main.js": "/static/js/main.718037fe.js",
-    "static/js/453.abfa21f1.chunk.js": "/static/js/453.abfa21f1.chunk.js",
-    "index.html": "/index.html",
-    "main.e102d906.css.map": "/static/css/main.e102d906.css.map",
-    "main.718037fe.js.map": "/static/js/main.718037fe.js.map",
-    "453.abfa21f1.chunk.js.map": "/static/js/453.abfa21f1.chunk.js.map"
+    "main.css": "/audio-recorder/static/css/main.e102d906.css",
+    "main.js": "/audio-recorder/static/js/main.8e5b8f98.js",
+    "static/js/453.abfa21f1.chunk.js": "/audio-recorder/static/js/453.abfa21f1.chunk.js",
+    "index.html": "/audio-recorder/index.html",
+    "main.e102d906.css.map": "/audio-recorder/static/css/main.e102d906.css.map",
+    "main.8e5b8f98.js.map": "/audio-recorder/static/js/main.8e5b8f98.js.map",
+    "453.abfa21f1.chunk.js.map": "/audio-recorder/static/js/453.abfa21f1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e102d906.css",
-    "static/js/main.718037fe.js"
+    "static/js/main.8e5b8f98.js"
   ]
 }
