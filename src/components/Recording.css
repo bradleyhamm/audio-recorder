@@ -1,0 +1,13 @@
+.recording {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+.recording .info {
+    width: 75%;
+}
+.recording .info input[type=text] {
+    flex-grow: 1;
+}
+.recording .info, .recording .controls {
+}
